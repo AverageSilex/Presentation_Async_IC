@@ -1,14 +1,104 @@
 \section{Oligopoly problem in VLSI}
 \begin{frame}{Problematic}{\insertsection}
     % Few EDA, PDK, Foundries
+    \begin{columns}
+        \column{0.49\textwidth}
+        \centering
+        \textbf{Electronic Design Automation tools}
+        \begin{itemize}
+            \item Synopsys (Fusion Design Platform)
+            \item Cadence (Virtuoso and Spectre)
+            \item Siemes (aka Mentor Graphics)
+        \end{itemize}
+
+        \column{0.49\textwidth}
+        \centering
+        \textbf{Foundries \cite{noauthor_top_nodate} \& Process Design Kit}
+        \begin{itemize}
+            \item Asia :
+            \begin{itemize}
+                \item TSMC (1)
+                \item Samsung (2)
+                \item UMC (5)
+                \item SMIC (6)
+            \end{itemize}
+            \item USA :
+            \begin{itemize}
+                \item Intel (3)
+                \item Global Foundries (4)
+                \item Texas Instruments (7)
+            \end{itemize}
+            \item Europe :
+            \begin{itemize}
+                \item Infineon (8)
+                \item NXP (9)
+                \item STMicroelectronics (10)
+            \end{itemize}
+        \end{itemize}
+    \end{columns}
 \end{frame}
 
-\begin{frame}{OPENROAD}{\insertsection}
+\begin{frame}{OPENROAD \cite{ajayi2019openroad}}{\insertsection}
     % Present the project and Skywater 130, Yosys ABC, ACT etc
+    "The OpenROAD flow delivers an Autonomous, No-Human-In-Loop (NHIL) flow, 24 hour turnaround from RTL-GDSII for rapid design exploration and physical design implementation."
+
+    \begin{columns}
+        \column{0.49\textwidth}
+        \centering
+        \textbf{Tools}
+        \begin{itemize}
+            \item Yosys ABC
+            \item OpenSTA
+            \item TritonRoute
+        \end{itemize}
+
+        \column{0.49\textwidth}
+        \centering
+        \textbf{Process Design Kit}
+        \begin{itemize}
+            \item Google Skywater 130nm
+            \item Global Foundries 180nm
+        \end{itemize}
+    \end{columns}
 \end{frame}
 
-\begin{frame}{CHIPS}{\insertsection}
+\begin{frame}{CHIPS \cite{noauthor_european_2025}}{\insertsection}
     % Present the project Coriolis, IHP PDK etc
+    % \begin{columns}
+    %     \column{0.49\textwidth}
+    %     \centering
+    %     \textbf{Objectives}
+    %     \begin{itemize}
+    %         \item Strengthening research and technological leadership
+    %         \item Building and reinforcing Europe's capacity to innovate in the design, manufacturing and packaging of advanced chips
+    %         \item Putting in place an adequate framework to increase production by 2030
+    %         \item Addressing the skills shortage and attracting new talent
+    %         \item Developing an in-depth understanding of global semiconductor supply chain
+    %     \end{itemize}
+
+    %     \column{0.49\textwidth}
+    %     \centering
+    %     \textbf{Pillar}
+    %     \begin{itemize}
+    %         \item IHP Open130-G2
+    %     \end{itemize}
+    % \end{columns}
+
+    \begin{columns}
+        \column{0.49\textwidth}
+        \centering
+        \textbf{Tools}
+        \begin{itemize}
+            \item Alliance/Coriolis \cite{noauthor_coriolis_nodate}
+        \end{itemize}
+
+        \column{0.49\textwidth}
+        \centering
+        \textbf{Process Design Kit}
+        \begin{itemize}
+            \item IHP Open130-G2
+        \end{itemize}
+    \end{columns}
 \end{frame}
 
 \section{Metastability \& Arbiters}

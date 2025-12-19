@@ -12,54 +12,218 @@
 \section{Linear pipeline or digital Fordism}
 \begin{frame}{Assembly Line}{\insertsection}
     % Figure Assembly line
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/assembly.pdf}
+    \end{figure}
 \end{frame}
 
 \begin{frame}{Linear Pipeline}{\insertsection}
     % Figure Combinational logic and registers
+    \begin{columns}
+        \column{0.49\textwidth}
+        \centering
+        \textbf{Combinational Logic}
+        \begin{itemize}
+            \item Time-independent
+            \item Output function of the present input
+        \end{itemize}
+
+        \column{0.49\textwidth}
+        \centering
+        \textbf{Registers}
+        \begin{itemize}
+            \item Sequential logic
+            \item Flip-Flop, Latch
+        \end{itemize}
+    \end{columns}
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=.9\textwidth]{Figures/linear_pipe.pdf}
+    \end{figure}
 \end{frame}
 
 \subsection{Concepts}
 \begin{frame}{Latency \& Throughput}{\insertsection ~- \insertsubsection}
     % Definition Latency
     % Definition Throughput
+    \begin{columns}
+        \column{0.49\textwidth}
+        \centering
+        \textbf{Latency}
+        \begin{itemize}
+            \item Time from input to output
+        \end{itemize}
+
+        \column{0.49\textwidth}
+        \centering
+        \textbf{Throughput}
+        \begin{itemize}
+            \item Number of data per time
+        \end{itemize}
+    \end{columns}
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/linear_time.pdf}
+    \end{figure}
 \end{frame}
 
-\begin{frame}{Parallelism \& Concurrency}{\insertsection ~- \insertsubsection}
+\begin{frame}{Concurrency \& Parallelism}{\insertsection ~- \insertsubsection}
     % Difference between both concepts
     % Introduction of a Fork and a Join
+    \begin{columns}
+        \column{0.49\textwidth}
+        \centering
+        \textbf{Concurrency}
+        \begin{itemize}
+            \item Multiple stages at the same time
+        \end{itemize}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/petri_concurrent.pdf}
+        \end{figure}
+
+        \column{0.49\textwidth}
+        \centering
+        \textbf{Parallelism}
+        \begin{itemize}
+            \item Multiple branch at the same time
+        \end{itemize}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/petri_parallel.pdf}
+        \end{figure}
+    \end{columns}
+
+
 \end{frame}
 
 \section{Clock-driven}
 \begin{frame}{Clock Signal}{\insertsection}
     % Global Clock signal
     % Data propagation through global synchronization
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/pipe_sync.pdf}
+    \end{figure}
 \end{frame}
 \subsection{Timing Constraints}
 \begin{frame}{Linear Pipeline}{\insertsection ~- \insertsubsection}
     % Concept Critical Path
     % Worst case timing
+    \begin{columns}
+        \column{0.49\textwidth}
+        \centering
+        \textbf{Critical Path}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/critical_path.pdf}
+        \end{figure}
+
+        \column{0.49\textwidth}
+        \centering
+        \textbf{Timing of combinational logic}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/pipe_sync_time.pdf}
+        \end{figure}
+    \end{columns}
 \end{frame}
 
-\begin{frame}{Setup}{\insertsection ~- \insertsubsection}
+\begin{frame}{Timing Analysis}{\insertsection ~- \insertsubsection}
     % Definition of setup time and chronogram
+    \begin{columns}
+        \column{0.49\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/pipe_sync_setup.pdf}
+        \end{figure}
+
+        \column{0.49\textwidth}
+        \centering
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/sync.pdf}
+        \end{figure}
+
+        \begin{boite1}{Constraints for all stages}
+            \begin{itemize}
+                \item Setup: Slack $S \geq 0$
+                \item Hold: Memorization time $H$
+            \end{itemize}
+        \end{boite1}
+    \end{columns}
 \end{frame}
 
-\begin{frame}{Hold}{\insertsection ~- \insertsubsection}
-    % Definition of hold time and chronogram
-\end{frame}
+% \begin{frame}{Hold}{\insertsection ~- \insertsubsection}
+%     % Definition of hold time and chronogram
+% \end{frame}
 
 \subsection{Drawbacks}
-\begin{frame}{Clock Skew}{\insertsection ~- \insertsubsection}
+\begin{frame}{Clock Tree \& Skew}{\insertsection ~- \insertsubsection}
     % Problem with large clock tree
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/clock_tree.pdf}
+    \end{figure}
 \end{frame}
 
 \begin{frame}{Clock Domain Crossing}{\insertsection ~- \insertsubsection}
-    % Synchronization of datas
-    % GALS
+    \begin{columns}
+        \column{0.49\textwidth}
+        \centering
+        \textbf{Globally Asynchronous Locally Synchronous}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/soc_CD.pdf}
+        \end{figure}
+
+        \column{0.49\textwidth}
+        \centering
+        \textbf{Clock Domain Crossing}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/cdc.pdf}
+        \end{figure}
+    \end{columns}
 \end{frame}
 
-\begin{frame}{Robustness}{\insertsection ~- \insertsubsection}
+\begin{frame}{Variability \cite{sharma_pvt_nodate}}{\insertsection ~- \insertsubsection}
     % Process variation, Voltage and Temperature
+    \begin{columns}
+        \column{0.39\textwidth}
+        \begin{boite1}{Problematic}
+            The delay of a cell is mainly influenced by three factors :
+            \begin{itemize}
+                \item Process variation
+                \item Supply voltage
+                \item Operating temperature
+            \end{itemize}
+        \end{boite1}
+
+        Solution :
+        \begin{itemize}
+            \item Study the circuit at different corners
+        \end{itemize}
+
+        \column{0.59\textwidth}
+        \centering
+        \begin{figure}
+        \begin{subfigure}{0.4\textwidth}
+            \includegraphics[width=\textwidth]{Figures/pvt_process.JPG}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}{0.4\textwidth}
+            \includegraphics[width=\textwidth]{Figures/pvt_voltage.JPG}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}{0.4\textwidth}
+            \includegraphics[width=\textwidth]{Figures/pvt_temperature.JPG}
+        \end{subfigure}
+        \end{figure}
+    \end{columns}
 \end{frame}
 
 \section{Event-driven}
