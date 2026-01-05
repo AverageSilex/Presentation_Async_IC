@@ -4,7 +4,7 @@
     \centering
     \begin{beamercolorbox}[sep=8pt,center,shadow=false,rounded=true]{title}
     \usebeamerfont{title}Part II - ASYNCHRONOUS CIRCUITS\par%
-    \usebeamerfont{subtitle} GUT meeting 13/01/2026
+    \usebeamerfont{subtitle} GUT meeting 20/01/2026
     \end{beamercolorbox}
     \vfill
 \end{nonumberframe}
@@ -226,57 +226,437 @@
     \end{columns}
 \end{frame}
 
-\section{Event-driven}
-\subsection{[TODO] Communication}
-\begin{frame}{Local Synchronization}{\insertsection ~- \insertsubsection}
-    % Pipeline with local synchronization
-\end{frame}
-
+\section{Muller Pipeline}
+\subsection{Transaction}
 \begin{frame}{Communication Channels}{\insertsection ~- \insertsubsection}
     % Sender, Receiver, Channel, Transaction
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/sender_receiver.pdf}
+    \end{figure}
 \end{frame}
 
-\begin{frame}{Handshakes}{\insertsection ~- \insertsubsection}
-    % Level / transition signaling
+\begin{frame}{Handshake}{\insertsection ~- \insertsubsection}
+    \only<1,5>{
+        \begin{figure}
+            \centering
+            \includegraphics[width= .6\textwidth]{Figures/two_ctrl_4.pdf}
+        \end{figure}
+        \begin{figure}
+            \centering
+            \includegraphics[scale=1.2]{Figures/wave_4P4.pdf}
+        \end{figure}
+    }
+    \only<2>{
+        \begin{figure}
+            \centering
+            \includegraphics[width= .6\textwidth]{Figures/two_ctrl_1.pdf}
+        \end{figure}
+        \begin{figure}
+            \centering
+            \includegraphics[scale=1.2]{Figures/wave_4P1.pdf}
+        \end{figure}
+    }
+    \only<3>{
+        \begin{figure}
+            \centering
+            \includegraphics[width= .6\textwidth]{Figures/two_ctrl_2.pdf}
+        \end{figure}
+        \begin{figure}
+            \centering
+            \includegraphics[scale=1.2]{Figures/wave_4P2.pdf}
+        \end{figure}
+    }
+    \only<4>{
+        \begin{figure}
+            \centering
+            \includegraphics[width= .6\textwidth]{Figures/two_ctrl_3.pdf}
+        \end{figure}
+        \begin{figure}
+            \centering
+            \includegraphics[scale=1.2]{Figures/wave_4P3.pdf}
+        \end{figure}
+    }
 \end{frame}
 
-\begin{frame}{Control Primitives}{\insertsection ~- \insertsubsection}
-    % Uncond and Cond
+\subsection{Signal Transition Graph}
+\begin{frame}{Four Phase Handshake}{\insertsection ~- \insertsubsection}
+    \begin{columns}
+        \column{.2\textwidth}
+
+        \begin{figure}
+        \begin{subfigure}{\textwidth}
+            \centering
+            \includegraphics[scale=.23]{Figures/paper/HS_in.png}
+        \end{subfigure}
+        % \begin{subfigure}{0.45\textwidth}
+        %     \centering
+        %     \includegraphics[scale=.23]{Figures/papper/HS_out.png}
+        %     \caption{}
+        % \end{subfigure}
+        \end{figure}
+
+        \column{.8\textwidth}
+        \begin{columns}
+        \column{.4\columnwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=.95\textwidth]{Figures/single.png}
+        \end{figure}
+
+        \column{.6\columnwidth}
+        \begin{boite1}{Signal Transition Graph}
+        \begin{itemize}
+            \item +/-: Rising or falling edge
+            \item arrow: internal transition
+            \item dotted arrow: external transition
+        \end{itemize}
+        \end{boite1}
+        \end{columns}
+
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/4p_chrono.png}
+        \end{figure}
+
+    \end{columns}
 \end{frame}
 
-\subsection{Transactions at the gate level}
-\begin{frame}{Delay Insensitive Circuits}{\insertsection ~- \insertsubsection}
-    % Uncond and Cond
+\begin{frame}{Detailled Protocol}{\insertsection ~- \insertsubsection}
+    \begin{columns}
+    \column{.45\textwidth}
+
+    \begin{figure}[]
+        \begin{multicols}{2}
+         \centering
+            \only<1->{
+            \begin{subfigure}{0.25\textwidth}
+                \centering
+                \includegraphics[scale=.2]{Figures/paper/Req.png}
+                \caption{}
+                \label{sfig:req}
+            \end{subfigure}
+            }
+            \only<2->{
+            \begin{subfigure}{0.25\textwidth}
+                \centering
+                \includegraphics[scale=.2]{Figures/paper/data_in.png}
+                \caption{}
+                \label{sfig:data_in}
+            \end{subfigure}
+            }
+            \only<3->{
+            \begin{subfigure}{0.25\textwidth}
+                \centering
+                \includegraphics[scale=.2]{Figures/paper/ack.png}
+                \caption{}
+                \label{sfig:ack}
+            \end{subfigure}
+            }
+            \only<4->{
+            \begin{subfigure}{0.25\textwidth}
+                \centering
+                \includegraphics[scale=.2]{Figures/paper/alternate.png}
+                \caption{}
+                \label{sfig:alt}
+            \end{subfigure}
+            }
+        \end{multicols}
+    \end{figure}
+
+    \column{.55\textwidth}
+        \only<1->{
+
+        (a): request propagation
+        }
+
+        \only<2->{
+        (b): data storage before acknowledge
+        }
+
+        \only<3->{
+        (c): data acknowledge
+        }
+
+        \only<4->{
+        (d): alternating Enable
+        }
+        \begin{figure}
+            \centering
+            \includegraphics[width=.5\textwidth]{Figures/single.png}
+        \end{figure}
+    \end{columns}
 \end{frame}
 
-\begin{frame}{State-Holding gates}{\insertsection ~- \insertsubsection}
-    % Mueller gate / C-element
+\begin{frame}{Weak Condition Half Buffer (WCHB) \cite{furber_four-phase_1996}}{\insertsection ~- \insertsubsection}
+\begin{columns}
+    \column{.4\textwidth}
+    \only<2->{
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/simple.pdf}
+    \end{figure}
+    }
+    \column{.6\textwidth}
+    \only<1->{
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/paper/STG_ctl.png}
+    \end{figure}
+    }
+\end{columns}
 \end{frame}
 
-\subsection{Formalism}
-\begin{frame}{Petri Nets}{\insertsection ~- \insertsubsection}
-    % Token, Place, Transition
-\end{frame}
+\subsection{Pipeline}
+\begin{frame}{Muller Gate}{\insertsection ~- \insertsubsection}
+    \begin{columns}[c]
+        \column{0.5\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width= \textwidth]{Figures/cel.pdf}
+        \end{figure}
 
-\begin{frame}{Signal Transition Graph}{\insertsection ~- \insertsubsection}
-    % 4P Handshake and WCHB controller
+        \column{0.5\textwidth}
+        \centering
+        \begin{tabular}{|c|c||c|}
+            \hline
+            A & B & $C_k$ \\ \hline \hline
+            0 & 0 & 0 \\ \hline
+            0 & 1 & $C_{k-1}$ \\ \hline
+            1 & 0 & $C_{k-1}$ \\ \hline
+            1 & 1 & 1 \\ \hline
+        \end{tabular}
+    \end{columns}
+    \begin{figure}
+        \centering
+        \includegraphics[width= .9\textwidth]{Figures/muller_pipe.pdf}
+    \end{figure}
 \end{frame}
 
 \section{Bundled-Data}
-\begin{frame}{Transaction at the pipeline level}{\insertsection ~- \insertsubsection}
-    % Control path, data path
-    % matched delay
+\begin{frame}{Pipeline}{\insertsection}
+    % Pipeline with local synchronization
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/pipe_async.pdf}
+    \end{figure}
+\end{frame}
+
+\subsection{Control Flow}
+\begin{frame}{\insertsubsection}{\insertsection}
+    \begin{columns}[c]
+        \column{0.35\textwidth}
+        \begin{boite1}{Control Primitives}
+            \begin{itemize}
+                \item Controllers
+                \item Fork \& Join
+                \item Split, Merge \& Arbiter
+                \item Source \& Sink
+            \end{itemize}
+        \end{boite1}
+
+        \column{0.65\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width= \textwidth]{Figures/cfg.pdf}
+        \end{figure}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Fork \& Join}{\insertsection ~- \insertsubsection}
+    \only<1>{
+    \begin{figure}
+        \centering
+        \includegraphics[width= \textwidth]{Figures/example_async_1.pdf}
+    \end{figure}
+    }
+    \only<2>{
+    \begin{figure}
+        \centering
+        \includegraphics[width= \textwidth]{Figures/example_async_2.pdf}
+    \end{figure}
+    }
+    \only<3>{
+    \begin{figure}
+        \centering
+        \includegraphics[width= \textwidth]{Figures/example_async_3.pdf}
+    \end{figure}
+    }
+    \only<4>{
+    \begin{figure}
+        \centering
+        \includegraphics[width= \textwidth]{Figures/example_async_4.pdf}
+    \end{figure}
+    }
+    \only<5>{
+    \begin{figure}
+        \centering
+        \includegraphics[width= \textwidth]{Figures/example_async_5.pdf}
+    \end{figure}
+    }
+    \only<6>{
+    \begin{figure}
+        \centering
+        \includegraphics[width= \textwidth]{Figures/example_async_6.pdf}
+    \end{figure}
+    }
+    \only<7>{
+    \begin{figure}
+        \centering
+        \includegraphics[width= \textwidth]{Figures/example_async_7.pdf}
+    \end{figure}
+    }
+    \only<8>{
+    \begin{figure}
+        \centering
+        \includegraphics[width= \textwidth]{Figures/example_async_8.pdf}
+    \end{figure}
+    }
+\end{frame}
+
+\begin{frame}{Conditional Propagation}{\insertsection ~- \insertsubsection}
+    \begin{columns}[c]
+    \column{0.5\textwidth}
+        \centering
+        \only<1>{
+        \begin{figure}
+            \centering
+            \includegraphics[width= \textwidth]{Figures/example_if_1.pdf}
+        \end{figure}
+        }
+        \only<2>{
+        \begin{figure}
+            \centering
+            \includegraphics[width= \textwidth]{Figures/example_if_2.pdf}
+        \end{figure}
+        }
+        \only<3>{
+        \begin{figure}
+            \centering
+            \includegraphics[width= \textwidth]{Figures/example_if_3.pdf}
+        \end{figure}
+        }
+        \only<4>{
+        \begin{figure}
+            \centering
+            \includegraphics[width= \textwidth]{Figures/example_if_4.pdf}
+        \end{figure}
+        }
+        \only<5>{
+        \begin{figure}
+            \centering
+            \includegraphics[width= \textwidth]{Figures/example_if_5.pdf}
+        \end{figure}
+        }
+        \only<6>{
+        \begin{figure}
+            \centering
+            \includegraphics[width= \textwidth]{Figures/example_if_6.pdf}
+        \end{figure}
+        }
+        % \only<7->{
+        % \begin{figure}
+        %     \centering
+        %     \includegraphics[width= \textwidth]{Figures/example_if_0.pdf}
+        % \end{figure}
+        % }
+
+    \column{0.5\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width= .75\textwidth]{Figures/split_sink.pdf}
+        \end{figure}
+
+        \begin{boite1}{Advantages}
+            \begin{itemize}
+                \item Data-driven
+                \item Partial activation of the logic
+                \item Event-gating
+            \end{itemize}
+        \end{boite1}
+
+    %     \minipage[c][0.7\textheight][s]{\columnwidth}
+    %     \centering
+    %     Loop structure
+    %     \only<1-6>{
+    %         \begin{figure}
+    %             \centering
+    %             \includegraphics[width= \textwidth]{Figures/example_loop_0.pdf}
+    %         \end{figure}
+    %     }
+    %     \only<7>{
+    %     \begin{figure}
+    %         \centering
+    %         \includegraphics[width= \textwidth]{Figures/example_loop_1.pdf}
+    %     \end{figure}
+    %     }
+    %     \only<8>{
+    %     \begin{figure}
+    %         \centering
+    %         \includegraphics[width= \textwidth]{Figures/example_loop_2.pdf}
+    %     \end{figure}
+    %     }
+    %     \only<9>{
+    %     \begin{figure}
+    %         \centering
+    %         \includegraphics[width= \textwidth]{Figures/example_loop_3.pdf}
+    %     \end{figure}
+    %     }
+    %     \only<10>{
+    %     \begin{figure}
+    %         \centering
+    %         \includegraphics[width= \textwidth]{Figures/example_loop_4.pdf}
+    %     \end{figure}
+    %     }
+    %     \only<11>{
+    %     \begin{figure}
+    %         \centering
+    %         \includegraphics[width= \textwidth]{Figures/example_loop_5.pdf}
+    %     \end{figure}
+    %     }
+    %     \only<12>{
+    %     \begin{figure}
+    %         \centering
+    %         \includegraphics[width= \textwidth]{Figures/example_loop_6.pdf}
+    %     \end{figure}
+    %     }
+    %     \vfill
+    %     \endminipage
+    \end{columns}
 \end{frame}
 
 \subsection{Timing Constraints}
-\begin{frame}{Setup \& Hold}{\insertsection ~- \insertsubsection}
+\begin{frame}{Setup \& Hold \cite{gimenez_static_2018}}{\insertsection ~- \insertsubsection}
     % Relative Timing Constraints
     % Delay equations
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/rtc_bd.png}
+    \end{figure}
 \end{frame}
 
-\begin{frame}{Local Clock Sets}{\insertsection ~- \insertsubsection}
-    % Static Timing Analysis
-    % During logical synthesis and PnR
+\begin{frame}{Setup \cite{gimenez_static_2018}}{\insertsection ~- \insertsubsection}
+    \begin{columns}
+        \column{0.6\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/rtc_bd_cut.png}
+        \end{figure}
+
+        \column{0.4\textwidth}
+        \begin{boite1}{Relative Timing Constraint}
+            \begin{equation*}
+                pod_i \mapsto data_{i+1} \prec ctrl_{i+1}
+            \end{equation*}
+        \end{boite1}
+
+        \begin{boite}{Delay Equation}
+            \begin{align*}
+                D_{R_i} + T_{r_{i+1}} + D_{L_{i+1}} \\> D_{L_{i}}  + T_{c_{i}}  + D_{P_i} + T_{s_{i+1}}
+            \end{align*}
+            Matched Delay : $D_{R_i}$
+        \end{boite}
+    \end{columns}
 \end{frame}
 
 \section*{Summary}
