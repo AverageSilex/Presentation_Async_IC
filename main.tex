@@ -62,6 +62,13 @@
   \setbeamercolor{itemize subitem}{fg=UniBEred}
   \begin{block}#2{\centering \textbf{#1}}}{\end{block}}
 
+\newenvironment<>{boite}[1]{%
+  \setbeamercolor{block title}{use=UniBEblack,fg=white,bg=UniBEblack}%
+  \setbeamercolor{block body}{bg=white}
+  \setbeamercolor{itemize item}{fg=UniBEblack}
+  \setbeamercolor{itemize subitem}{fg=UniBEblack}
+  \begin{block}#2{\centering \textbf{#1}}}{\end{block}}
+
 % For a title slide to each section
 \AtBeginSection[]{
   \setbeamercolor{structure}{fg=UniBEblack}

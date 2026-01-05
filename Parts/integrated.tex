@@ -23,15 +23,21 @@
 \subsection{Combinational Logic}
 \begin{frame}{Boolean Algebra}{\insertsection ~- \insertsubsection}
     \begin{columns}
-        \column{0.6\textwidth}
+        \column{0.65\textwidth}
         \begin{align}
-            S &= \bar{A} \bar{B} {C_{in}} + \bar{A} {B} \bar{C_{in}} + {A} \bar{B} \bar{C_{in}} + {A} {B} {C_{in}} \\
+            S &= \bar{A} \bar{B} {C_{in}} + \bar{A} {B} \bar{C_{in}} + {A} \bar{B} \bar{C_{in}} + {A} {B} {C_{in}} \label{eq:dnf_s}\\
             S &= A \oplus B \oplus {C_{in}} \\
-            C_{out} &= \bar{A} {B} {C_{in}} + {A} \bar{B} {C_{in}} + A B \bar{C_{in}} + A B {C_{in}} \\
+            C_{out} &= \bar{A} {B} {C_{in}} + {A} \bar{B} {C_{in}} + A B \bar{C_{in}} + A B {C_{in}} \label{eq:dnf_cout}\\
             C_{out} &= A B + {C_{in}} ( A \oplus B)
         \end{align}
 
-        \column{0.4\textwidth}
+        \begin{boite1}{Note}
+            \begin{itemize}
+                \item (\ref{eq:dnf_s}) and (\ref{eq:dnf_cout}) are in Disjunctive Normal Form (DNF)
+            \end{itemize}
+        \end{boite1}
+
+        \column{0.35\textwidth}
         \begin{table}[]
         \begin{tabular}{|ccc|cc|}
         \hline
@@ -155,9 +161,9 @@
     \begin{columns}
         \column{0.42\textwidth}
         \begin{itemize}
-            \item Instruction Set Architecture
+            \item Instruction Set Architecture (ISA)
             \item Single Instruction Single Data (SISD)
-            \item Executes a program
+            \item Executes a program stored in memory
         \end{itemize}
 
         \column{0.6\textwidth}
@@ -194,6 +200,7 @@
     % Present the 5 stage execution pipeline
     \begin{columns}
         \column{0.4\textwidth}
+        Stages :
         \begin{itemize}
             \item IF: Instruction Fetch
             \item ID: Instruction Decode
@@ -202,7 +209,7 @@
             \item WB: WriteBack
         \end{itemize}
 
-        \column{0.69\textwidth}
+        \column{0.6\textwidth}
         \begin{figure}
             \centering
             \includegraphics[width=\textwidth]{Figures/Fivestagespipeline.png}
@@ -221,7 +228,7 @@
             \item Single Instruction Multiple Data (SIMD)
             \item Vector operations
             \begin{itemize}
-                \item scalar multiplication $a\vec{v}$
+                \item e.g. scalar multiplication $a\vec{v}$
             \end{itemize}
         \end{itemize}
 
@@ -229,7 +236,7 @@
         \begin{figure}
             \centering
             \includegraphics[width=.85\textwidth]{Figures/simd.png}
-            \caption{\cite{noauthor_simd_nodate}}
+            \caption{Instruction to Processing Unit (PU) \cite{noauthor_simd_nodate}}
         \end{figure}
     \end{columns}
 \end{frame}
@@ -333,16 +340,17 @@
         \end{figure}
 
         \column{0.49\textwidth}
-        Three perspectives:
+        \begin{boite1}{Perspectives}
         \begin{itemize}
             \item Behavioral
             \item Structural
             \item Physical/Geometry
         \end{itemize}
+        \end{boite1}
 
         \textbf{Logical synthesis} : from behavioral to structural
 
-        \textbf{Physical synthesis / Layout} : from structural to physical
+        \textbf{Physical synthesis / Layout} : from structural to physical / geometrical
 
     \end{columns}
 \end{frame}
@@ -354,8 +362,8 @@
         \centering
         \textbf{High Level Synthesis}
         \begin{itemize}
-            \item From system level description
-            \item Produces a Finite State Machine (FSM) (RTL level description)
+            \item From a system-level description
+            \item Produces a Finite State Machine (FSM)
             \item Followed by logical synthesis
         \end{itemize}
 
@@ -363,7 +371,7 @@
         \centering
         \textbf{Logical synthesis}
         \begin{itemize}
-            \item Takes a RTL description \& technology node
+            \item Takes a RTL description (e.g. FSM) \& technology node
             \item Builds a abstract representation of the logic and maps it to standard cell
             \item Produces a netlist / gate-level circuit
         \end{itemize}
@@ -374,20 +382,19 @@
     % Present Floor plan, Place and Route
     \begin{columns}[c]
         \column{0.39\textwidth}
-        \begin{boite1}{Steps}
-            \begin{itemize}
-                \item Partitioning
-                \item Floorplanning
-                \item Placement
-                \item Global routing
-                \item Detailed routing
-            \end{itemize}
-        \end{boite1}
+        Steps :
+        \begin{itemize}
+            \item Partitioning
+            \item Floorplanning
+            \item Placement
+            \item Global routing
+            \item Detailed routing
+        \end{itemize}
 
         \column{0.59\textwidth}
         \begin{figure}
             \centering
-            \includegraphics[width=.75\textwidth]{Figures/amd2901_chip_routed.png}
+            \includegraphics[width=.8\textwidth]{Figures/amd2901_chip_routed.png}
             \caption{Chip layout \cite{noauthor_coriolis_nodate}}
         \end{figure}
     \end{columns}
@@ -400,7 +407,7 @@
         \column{0.39\textwidth}
         \begin{boite1}{Verification}
             \begin{itemize}
-                \item Functionnal Simulation
+                \item Functional Simulation
                 \begin{itemize}
                     \item Behavioral
                     \item Gate-level (Timed)
@@ -410,12 +417,12 @@
             \end{itemize}
         \end{boite1}
 
-        \begin{boite1}{Validation}
+        \begin{boite}{Validation}
             \begin{itemize}
                 \item FPGA (Behavioral)
                 \item Static Timing Analysis and Timing Closure
             \end{itemize}
-        \end{boite1}
+        \end{boite}
 
         % \begin{boite1}{Formal Verification}
         %     \begin{itemize}
@@ -451,7 +458,7 @@
 \begin{frame}{\insertsection}
  \begin{itemize}
     \item The IC design flow consist of successive refinement accross abstraction layers
-    \item Trade-offs : Flexibility vs Performance, Serial vs Parallel, etc.
+    \item Design choices : Flexibility vs Performance, Serial vs Parallel, etc.
     \item CPUs and GPUs are instruction set architectures that execute programs
     \item System on chip are composed of multiple subsystems (IPs)
     \item FPGA are a good platform to prototype hardware designs
