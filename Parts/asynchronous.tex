@@ -659,7 +659,22 @@
     \end{columns}
 \end{frame}
 
-\section*{Summary}
+\section*{Summary - \insertpart}
 \begin{frame}{\insertsection}
-
+    % Data path is made out of sequential and combinational logic
+    %
+    \begin{itemize}
+        \item Data travels from register to register
+        \item The data path consists of sequential and combinational logic
+        \item Data is propagated through a global clock in synchronous circuits
+        \item In asynchronous circuits the propagation is local and transactionnal
+        \item In Bundled-Data, transactions are done via handshakes between controllers
+        \item All digital circuits are subject to variability issues, requiring extensive timing analysis
+        \item Asynchronous Circuits are advantageous for the following reasons :
+        \begin{itemize}
+            \item Lower power consumption
+            \item More robustness and modularity
+            \item Less timing constraints
+        \end{itemize}
+    \end{itemize}
 \end{frame}
